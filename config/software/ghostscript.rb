@@ -20,6 +20,7 @@ build do
 
   config_args = [
     "--prefix=#{install_dir}/embedded",
+    "--without-tesseract"   # Tesseract breaks make install on Centos7
   ]
 
   command "./configure #{config_args.join(' ')}", env: env
