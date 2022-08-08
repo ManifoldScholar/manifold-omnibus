@@ -7,7 +7,7 @@ require 'find'
 
 require 'active_interaction'
 require 'active_support/all'
-require 'attr_lazy'
+require 'attr_lazy_reader'
 require 'cleanroom'
 require 'dux'
 require 'git'
@@ -26,7 +26,7 @@ OmnibusInterface.configure do
     platform 'macos' do
       package_glob 'macos/*.pkg'
     end
-    
+
     platform 'ubuntu18' do
       package_glob 'ubuntu18/*.deb'
 
