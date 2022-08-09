@@ -46,11 +46,11 @@ module OmnibusInterface
 
     # @!group Configured Attributes
 
-    attr_lazy_accessor :builder_vm do
+    attr_lazy_reader :builder_vm do
       "#{name}-builder" if virtualized?
     end
 
-    attr_lazy_accessor :install_vm do
+    attr_lazy_reader :install_vm do
       "#{name}-install" if virtualized?
     end
 

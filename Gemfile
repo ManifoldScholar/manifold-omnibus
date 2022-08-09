@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Install omnibus
 # gem 'omnibus', '~> 7.0', git: 'https://github.com/chef/omnibus', ref: "f8f202cdffe5a77aed4c4884f302a38be3eabc64"
-gem 'omnibus', '~> 8.0'
+gem 'omnibus', '~> 8.3.2'
 
 # Use Chef's software definitions. It is recommended that you write your own
 # software definitions, but you can clone/fork Chef's to get you started.
