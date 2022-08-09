@@ -22,6 +22,7 @@ gem 'ptools'
 gem 'rack', '>= 2.0.6'
 gem 'rubyzip', '>= 1.2.2', '< 3.0'
 gem 'semantic'
+gem 'net-ftp'
 
 # This development group is installed by default when you run `bundle install`,
 # but if you are using Omnibus in a CI-based infrastructure, you do not need
