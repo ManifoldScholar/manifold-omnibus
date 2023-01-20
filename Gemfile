@@ -8,7 +8,7 @@ gem 'omnibus', '~> 8.3.2'
 # software definitions, but you can clone/fork Chef's to get you started.
 gem 'omnibus-software', github: 'opscode/omnibus-software', ref: "3ac1dbed61173f0919b9f8215bc1af00d7a6c27b"
 gem 'active_interaction'
-gem 'activesupport', '~> 5.2', require: false
+gem 'activesupport', '~> 6.1', require: false
 gem 'attr_lazy_reader'
 gem 'cleanroom'
 gem 'commander'
