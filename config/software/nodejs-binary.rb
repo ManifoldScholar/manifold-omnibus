@@ -30,7 +30,7 @@ license "MIT"
 license_file "LICENSE"
 skip_transitive_dependency_licensing true
 
-version "12.22.1" do
+version "16.16.0" do
   source_hash = if ppc64le?
                   "376f76be1e2512a6b6a69aadca063b2b64e476869da8c30c8c649303c2c19aa8"
                 elsif ppc64?
@@ -38,7 +38,7 @@ version "12.22.1" do
                 elsif s390x?
                   "b658a78b1c194e9faf1b6955e1fd7eacaad228698a6b4744ffc6d44ffa31e74c"
                 else
-                  "d315c5dea4d96658164cdb257bd8dbb5e44bdd2a7c1d747841f06515f23a0042"
+                  "c85b16d1a4c259d01be7111ecb0361260627e4fc245004a920521eacb28e50df"
                 end
   source sha256: source_hash
 end

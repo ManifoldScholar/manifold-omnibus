@@ -49,7 +49,7 @@ dependency "openssl"
 override :openssl, version: "1.1.1k"
 
 dependency "ruby"
-override :ruby, version: "2.7.3"
+override :ruby, version: "2.7.8"
 
 # We can go to v17 when Manifold is on Ruby v2.7 or higher
 dependency "chef"
@@ -65,7 +65,7 @@ dependency "runit"
 override "runit", version: "2.1.1"
 
 dependency "redis"
-override "redis", version: "5.0.7"
+override "redis", version: "6.2.7"
 
 # For Latex ingestion
 dependency "pandoc-binary"
@@ -75,10 +75,10 @@ dependency "bundler"
 override :bundler, version: "2.2.19"
 
 dependency "nodejs-binary"
-override "nodejs-binary", version: "12.22.1"
+override "nodejs-binary", version: "16.16.0"
 
 dependency "yarn"
-override :yarn, version: "1.22.5"
+override :yarn, version: "1.22.19"
 
 # For Nokogiri
 dependency "libxml2"
@@ -91,7 +91,7 @@ dependency "imagemagick"
 override :imagemagick, version: "7.0.11-8"
 
 dependency "postgresql"
-override "postgresql", version: "13.2"
+override "postgresql", version: "13.12"
 
 dependency "elasticsearch"
 override :elasticsearch, version: "7.12.0"

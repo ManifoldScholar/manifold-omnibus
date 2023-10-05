@@ -23,14 +23,16 @@ module OmnibusInterface
     end
 
     attr_lazy_reader :platform do
-      if ubuntu18?
-        :ubuntu18
-      elsif ubuntu20?
+      if ubuntu20?
         :ubuntu20
+      elsif ubuntu22?
+        :ubuntu22
       elsif centos7?
         :centos7
       elsif centos8?
         :centos8
+      elsif centos9?
+        :centos9
       elsif macos?
         :macos
       end
@@ -48,6 +50,10 @@ module OmnibusInterface
       centos? && ohai_platform_version.start_with?('8.')
     end
 
+    def centos9?
+      centos? && ohai_platform_version.start_with?('9.')
+    end
+
     def macos?
       ohai_platform == 'mac_os_x'
     end
@@ -56,12 +62,12 @@ module OmnibusInterface
       ohai_platform == 'ubuntu'
     end
 
-    def ubuntu18?
-      ubuntu? && ohai_platform_version == '18.04'
-    end
-
     def ubuntu20?
       ubuntu? && ohai_platform_version == '20.04'
+    end
+
+    def ubuntu22?
+      ubuntu? && ohai_platform_version == '22.04'
     end
 
     # @!group Ohai methods
