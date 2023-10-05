@@ -15,7 +15,7 @@
 #
 
 name "postgresql"
-default_version "13.2"
+default_version "13.12"
 
 license "PostgreSQL"
 license_file "COPYRIGHT"
@@ -37,8 +37,8 @@ end
 #
 # Version 13.x will EoL November 13, 2025
 #
-version "13.2" do
-  source sha256: "5fd7fcd08db86f5b2aed28fcfaf9ae0aca8e9428561ac547764c2a2b0f41adfc",
+version "13.12" do
+  source sha256: "0da1edcee3514b7bc7ba6dbaf0c00499e8ac1590668e8789c50253a6249f218b",
     url: "https://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.bz2"
 end
 

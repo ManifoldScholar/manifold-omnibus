@@ -7,8 +7,8 @@ skip_transitive_dependency_licensing true
 
 dependency "nodejs-binary"
 
-version "1.22.5" do
-  source sha512: "c33c040ed57eb05c04905b8996db31a34099f0c18dbf1818959c5592514abc99f1180592561ec5d3e760c084dbcf2dcdf3ebb4fe8918f082b6aa089cf10921bb"
+version "1.22.19" do
+  source sha512: "ff4579ab459bb25aa7c0ff75b62acebe576f6084b36aa842971cf250a5d8c6cd3bc9420b22ce63c7f93a0857bc6ef29291db39c3e7a23aab5adfd5a4dd6c5d71"
 end
 
 source url: "https://github.com/yarnpkg/yarn/releases/download/v#{version}/yarn-v#{version}.tar.gz"

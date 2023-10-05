@@ -148,8 +148,13 @@ end
 
   link link_dir do
     to target_dir
-    mode "0775"
   end
+
+  directory target_dir do
+    mode '0775'
+    only_if %[test -d #{target_dir}]
+  end
+
 end
 
 legacy_sidekiq_log_file = File.join(manifold_api_log_dir, 'sidekiq.log')
