@@ -65,7 +65,7 @@ dependency "runit"
 override "runit", version: "2.1.1"
 
 dependency "redis"
-override "redis", version: "6.2.7"
+override "redis", version: "6.2.14"
 
 # For Latex ingestion
 dependency "pandoc-binary"
@@ -88,13 +88,13 @@ dependency "ghostscript"
 override :ghostscript, version: "9.54.0"
 
 dependency "imagemagick"
-override :imagemagick, version: "7.0.11-8"
+override :imagemagick, version: "7.1.1-21"
 
 dependency "postgresql"
 override "postgresql", version: "13.12"
 
 dependency "elasticsearch"
-override :elasticsearch, version: "7.12.0"
+override :elasticsearch, version: "7.17.15"
 
 dependency "logrotate"
 override :logrotate, version: "3.18.0"
