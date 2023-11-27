@@ -15,7 +15,7 @@
 #
 
 name "elasticsearch"
-default_version "7.12.0"
+default_version "7.17.15"
 
 dependency "server-open-jre"
 dependency "zlib"
@@ -32,8 +32,8 @@ whitelist_file /libboost/
 # x-pack-ml seems to use system libz. For now, commenting to avoid failing health check.
 whitelist_file /x-pack-ml/
 
-version "7.12.0" do
-  source sha512: "7b30ca5f45332475e6cf2360a5a5c2d8bcfb0d7a2f11e00237bffc4a5a483f962cc48a71546d01c6fd9a8ec6948c942b07896683e235aef3c112bd9c707baf43"
+version "7.17.15" do
+  source sha512: "58c85d0127236e7994f4e303b99899db0ca1b921a1bc40082c2383d632bc53f03a4c48f5b39fa7102530814d5f6f859364cd29d22a1024feaac4246d788789ed"
 end
 
 target_path = "#{install_dir}/embedded/elasticsearch"
