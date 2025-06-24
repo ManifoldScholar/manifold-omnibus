@@ -15,7 +15,9 @@ module OmnibusInterface
 
     delegate :name, to: :project, prefix: true
 
-    delegate :build_ssh_script_command, to: :vagrant
+    def build_ssh_script_command(*args, **kwargs, &block)
+      vagrant.build_ssh_script_command(*args, **kwargs, &block)
+    end
 
     def initialize(name:, project:)
       @name = name.to_s
@@ -95,7 +97,6 @@ module OmnibusInterface
       overrides = {
         package_dir: File.join('/vagrant/pkg', name)
       }
-
       build_ssh_script_command target: builder_vm do |s|
         s << "source ~/load-omnibus-toolchain.sh"
         s << "cd /vagrant"

@@ -15,7 +15,7 @@
 #
 
 name "postgresql"
-default_version "13.12"
+default_version "13.21"
 
 license "PostgreSQL"
 license_file "COPYRIGHT"
@@ -26,7 +26,6 @@ dependency "openssl"
 dependency "libedit"
 dependency "ncurses"
 dependency "config_guess"
-dependency "postgresql-9.6"
 
 if osx?
   dependency "libossp-uuid"
@@ -34,15 +33,12 @@ else
   dependency "libuuid"
 end
 
-#
-# Version 13.x will EoL November 13, 2025
-#
-version "13.12" do
-  source sha256: "0da1edcee3514b7bc7ba6dbaf0c00499e8ac1590668e8789c50253a6249f218b",
-    url: "https://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.bz2"
-end
+version "13.21" do
+  source sha256: "37d3e26304ef379934f9c15111bb982f5242ea18a4c783a87caa1389af6b1f4d",
+         url: "https://ftp.postgresql.org/pub/source/v13.21/postgresql-13.21.tar.gz"
+  end
 
-source url: "https://ftp.postgresql.org/pub/source/v#{version}/postgresql-#{version}.tar.bz2"
+source url: "https://ftp.postgresql.org/pub/source/v#{version}/postgresql-#{version}.tar.gz"
 
 relative_path "postgresql-#{version}"
 

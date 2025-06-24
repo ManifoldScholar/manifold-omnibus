@@ -1,12 +1,7 @@
 source 'https://rubygems.org'
 
-# Install omnibus
-# gem 'omnibus', '~> 7.0', git: 'https://github.com/chef/omnibus', ref: "f8f202cdffe5a77aed4c4884f302a38be3eabc64"
-gem 'omnibus', '~> 8.3.2'
-
-# Use Chef's software definitions. It is recommended that you write your own
-# software definitions, but you can clone/fork Chef's to get you started.
-gem 'omnibus-software', github: 'opscode/omnibus-software', ref: "3ac1dbed61173f0919b9f8215bc1af00d7a6c27b"
+gem 'omnibus', '~> 9.0.24'
+gem 'omnibus-software'
 gem 'active_interaction'
 gem 'activesupport', '~> 5.2', require: false
 gem 'attr_lazy_reader'
@@ -24,14 +19,8 @@ gem 'rubyzip', '>= 1.2.2', '< 3.0'
 gem 'semantic'
 gem 'net-ftp'
 
-# This development group is installed by default when you run `bundle install`,
-# but if you are using Omnibus in a CI-based infrastructure, you do not need
-# the Test Kitchen-based build lab. You can skip these unnecessary dependencies
-# by running `bundle install --without development` to speed up build times.
 group :development do
-  # Use Berkshelf for resolving cookbook dependencies
-  gem 'berkshelf', '~> 7.0'
-  # Use Test Kitchen with Vagrant for converging the build environment
-  gem 'test-kitchen',    '~> 1.4'
-  gem 'kitchen-vagrant', '~> 0.18'
+  gem 'berkshelf', '~> 8.0'
+  gem 'test-kitchen',    '~> 3.7'
+  gem 'kitchen-vagrant', '~> 2.0'
 end

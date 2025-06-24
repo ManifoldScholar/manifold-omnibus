@@ -65,7 +65,7 @@ module OmnibusInterface
 
     # @param [String] target
     # @return [String]
-    def build_ssh_script_command(target:, &block)
+    def build_ssh_script_command(target: nil, &block)
       script = build_ssh_script &block
 
       %[vagrant ssh -c #{Shellwords.shellescape(script)} #{target}]

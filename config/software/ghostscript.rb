@@ -1,17 +1,17 @@
 name "ghostscript"
 
-default_version '9.54.0'
+default_version '10.05.1'
 
 license "AGPL-3.0"
 license_file "LICENSE"
 skip_transitive_dependency_licensing true
 
-version "9.54.0" do
-  source sha512: '93cfac3a754d4a7fa94112f3e04ba2ae633c40bb924734db72229096aac2f07c95877737f37f2bfef6be1b1d074af79e75cde3d589ea102def7f4654403e4804'
-  source url: "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.gz"
+version "10.05.1" do
+  source sha512: '004b913291871133cfd1e6ddef541f9fc29da766547e871b2143c8ccfa9167efba704dac2618ebee5d8f5a07d8df0eb70ff174fd6c400b152c6b8512dae68ba5'
+  source url: "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostpdl-10.05.1.tar.gz"
 end
 
-relative_path "ghostscript-#{version}"
+relative_path "ghostpdl-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)

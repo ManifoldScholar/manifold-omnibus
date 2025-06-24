@@ -1,5 +1,5 @@
 name "imagemagick"
-default_version "7.1.1-21"
+default_version "7.1.1-47"
 
 license "ImageMagick"
 license_file "LICENSE"
@@ -16,8 +16,8 @@ dependency "libxml2"
 dependency "zlib"
 dependency "ghostscript"
 
-version '7.1.1-21' do
-  source sha512: 'fd74f50b10a9406180bcdce91b59a3ce2d7803c162d2b9bbf0093e3f939c3c63c17abfddc692ce972f7e0c43123c68e5bbb7ef0867f433e51c906a28f1826049'
+version '7.1.1-47' do
+  source sha512: '68bae63624604c41b98a326a1ab367cea8df11b2298564d722b3d39f6d8271f64110c2468e2ec8760592d2aaee13f40942ba7bf137780e6dda246ab6f6f87a67'
 end
 
 source url: "https://github.com/ImageMagick/ImageMagick/archive/refs/tags/#{version}.tar.gz"
