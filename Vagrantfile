@@ -44,7 +44,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   platforms = [
     { name: "ubuntu20", box: 'bento/ubuntu-20.04', builder_ip: '10.42.1.8', installer_ip: '10.42.1.9' },
     { name: "ubuntu22", box: 'bento/ubuntu-22.04', builder_ip: '10.42.1.12', installer_ip: '10.42.1.13' },
-    { name: "centos7", box: 'bento/centos-7.9', builder_ip: '10.42.1.4', installer_ip: '10.42.1.5' },
     { name: "centos8", box: 'bento/centos-8.3', builder_ip: '10.42.1.10', installer_ip: '10.42.1.11' },
     { name: "centos9", box: 'bento/centos-stream-9', builder_ip: '10.42.1.14', installer_ip: '10.42.1.15' },
   ]
@@ -57,8 +56,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       builder.dns.tld = 'vagrant'
       builder.vm.hostname = "#{platform[:name]}-builder.omnibus-#{project_name}"
       builder.vm.provision :shell, path: "lib/scripts/provision-#{platform[:name]}.sh"
+      builder.vm.provision :shell, path: "lib/scripts/install-ruby.sh"
       builder.vm.provision :chef_solo do |chef|
         chef.custom_config_path = "CustomConfiguration.chef"
+
         chef.json = {
           "omnibus" => {
             "build_user"  => "vagrant",
