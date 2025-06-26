@@ -34,7 +34,7 @@ class CertificateHelper
   # If the number of files between the two directories is different
   # something got added so trigger the run
   def new_certificate_added?
-    return true unless File.exists?(@directory_hash_file)
+    return true unless File.exist?(@directory_hash_file)
 
     stored_hash = File.read(@directory_hash_file)
     trusted_certs_dir_hash != stored_hash
@@ -75,7 +75,7 @@ class CertificateHelper
   end
 
   def valid?(file)
-    exists = File.exists?(file)
+    exists = File.exist?(file)
     FileUtils.rm_f(file) if File.symlink?(file) && !exists
 
     exists

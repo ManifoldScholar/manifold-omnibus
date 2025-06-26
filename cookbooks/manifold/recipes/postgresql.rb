@@ -75,7 +75,7 @@ end
 
 execute "/opt/manifold/embedded/bin/initdb -D #{postgresql_data_dir} -E UTF8" do
   user postgresql_user
-  not_if { File.exists?(File.join(postgresql_data_dir, "PG_VERSION")) }
+  not_if { File.exist?(File.join(postgresql_data_dir, "PG_VERSION")) }
 end
 
 postgresql_config = File.join(postgresql_data_dir, "postgresql.conf")

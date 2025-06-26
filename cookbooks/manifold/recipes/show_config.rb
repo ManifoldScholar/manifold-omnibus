@@ -1,4 +1,4 @@
-if File.exists?('/etc/manifold/manifold.rb')
+if File.exist?('/etc/manifold/manifold.rb')
   Manifold[:node] = node
   Manifold.from_file('/etc/manifold/manifold.rb')
 end

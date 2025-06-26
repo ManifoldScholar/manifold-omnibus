@@ -133,7 +133,7 @@ module SecretsHelper
     def read_manifold_secrets!
       existing_secrets = {}
 
-      if File.exists?(SECRETS_FILE)
+      if File.exist?(SECRETS_FILE)
         existing_secrets = Chef::JSONCompat.from_json(File.read(SECRETS_FILE))
       end
 
@@ -216,7 +216,7 @@ class RedhatHelper
   end
 
   def self.read_release_file
-    if File.exists?("/etc/redhat-release")
+    if File.exist?("/etc/redhat-release")
       contents = File.read("/etc/redhat-release").chomp
     else
       "not redhat"

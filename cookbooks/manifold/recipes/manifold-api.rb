@@ -161,7 +161,7 @@ legacy_sidekiq_log_file = File.join(manifold_api_log_dir, 'sidekiq.log')
 
 link legacy_sidekiq_log_file do
   to File.join(node['manifold']['sidekiq']['log_directory'], 'current')
-  not_if { File.exists?(legacy_sidekiq_log_file) }
+  not_if { File.exist?(legacy_sidekiq_log_file) }
 end
 
 # Make schema.rb writable for when we run `rake db:migrate`

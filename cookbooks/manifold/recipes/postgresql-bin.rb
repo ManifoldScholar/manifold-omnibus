@@ -31,7 +31,7 @@ ruby_block "Link postgresql bin files to the correct version" do
   end
 
   only_if do
-    version_file_does_not_exist = !File.exists?(File.join(postgresql_data_dir, "PG_VERSION"))
+    version_file_does_not_exist = !File.exist?(File.join(postgresql_data_dir, "PG_VERSION"))
     version_mismatched          = pg_helper.version !~ /^#{pg_helper.database_version}/
 
     version_file_does_not_exist || version_mismatched

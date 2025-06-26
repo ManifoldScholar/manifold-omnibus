@@ -16,7 +16,7 @@ class OmnibusHelper
   end
 
   def not_listening?(service_name)
-    File.exists?("/opt/manifold/service/#{service_name}/down") && service_down?(service_name)
+    File.exist?("/opt/manifold/service/#{service_name}/down") && service_down?(service_name)
   end
 
   def service_enabled?(service_name)

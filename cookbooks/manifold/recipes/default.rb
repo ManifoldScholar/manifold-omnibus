@@ -23,7 +23,7 @@ directory "/etc/manifold" do
   only_if { node['manifold']['manage-storage-directories']['manage_etc'] }
 end.run_action(:create)
 
-if File.exists?("/var/opt/manifold/bootstrapped")
+if File.exist?("/var/opt/manifold/bootstrapped")
 	node.default['manifold']['bootstrap']['enable'] = false
 end
 
