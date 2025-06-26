@@ -23,9 +23,23 @@ module URI
       :query
     ].freeze
 
-    # Include this class as the handler for 'redis' scheme
+    # Safely register this class as the handler for 'redis' scheme
     # This allows URI('redis://') to delegate to this class
-    @@schemes['REDIS'] = Redis
+    def self.register_redis_scheme
+      # Ensure @@schemes is initialized
+      @@schemes ||= {}
+      @@schemes['REDIS'] = self
+    rescue NameError
+      # If @@schemes doesn't exist, try alternative registration methods
+      if URI.respond_to?(:register_scheme)
+        URI.register_scheme('REDIS', self)
+      else
+        warn "Could not register Redis URI scheme"
+      end
+    end
+
+    # Register the scheme when the class is loaded
+    register_redis_scheme
 
     def self.build(args)
       super(Util::make_components_hash(self, args))
@@ -50,7 +64,7 @@ module URI
 
     protected
 
-     def check_password(value)
+    def check_password(value)
       value.nil? || !value.empty?
     end
   end
