@@ -69,7 +69,6 @@ module Manifold
         "redis",
         "manifold_api",
         "puma",
-        "cable",
         "sidekiq",
         "nginx",
         "logging",

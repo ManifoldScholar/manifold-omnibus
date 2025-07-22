@@ -2,7 +2,7 @@
 
 cd <%= @options[:rails_home] %>/working
 
-export PUMA_APPLICATION=<%= @options[:service] == "cable" ? "cable" : "api" %>
+export PUMA_APPLICATION=api
 export <%= @options[:env_prefix] %>_SOCKET=<%= @options[:puma_listen_socket] %>
 export <%= @options[:env_prefix] %>_PIDFILE=<%= @options[:puma_pidfile] %>
 export <%= @options[:env_prefix] %>_STATEFILE=<%= @options[:puma_statefile] %>

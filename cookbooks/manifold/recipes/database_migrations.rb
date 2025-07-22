@@ -19,15 +19,7 @@ require 'fileutils'
 
 omnibus_helper = OmnibusHelper.new(node)
 
-port = node['manifold']['elasticsearch']['port']
-bind = node['manifold']['elasticsearch']['bind']
-elasticsearch_url_parts = ["http://"]
-elasticsearch_url_parts << bind
-elasticsearch_url_parts << ":#{port}" if port
-elasticsearch_url = elasticsearch_url_parts.join("")
-
 dependent_services = []
-dependent_services << "service[cable]" if omnibus_helper.should_notify?("cable")
 dependent_services << "service[clockwork]" if omnibus_helper.should_notify?("clockwork")
 dependent_services << "service[puma]" if omnibus_helper.should_notify?("puma")
 dependent_services << "service[sidekiq]" if omnibus_helper.should_notify?("sidekiq")
@@ -55,29 +47,6 @@ bash "redis-wait" do
 
   [ "${response}" = "PONG" ]
   EOH
-
-  retries 20
-
-  retry_delay 5
-
-  notifies :run, "execute[elasticsearch-start]", :immediately
-end
-
-execute "elasticsearch-start" do
-
-  action :nothing
-
-  command "/opt/manifold/bin/manifold-ctl start elasticsearch"
-
-  retries 20
-
-  notifies :run, "execute[elasticsearch-wait]", :immediately
-end
-
-execute "elasticsearch-wait" do
-  command "curl -s #{elasticsearch_url}"
-
-  action :nothing
 
   retries 20
 

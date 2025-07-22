@@ -102,8 +102,6 @@ default['manifold']['manifold-api']['redis_socket'] = "/var/opt/manifold/redis/r
 default['manifold']['manifold-api']['redis_sentinels'] = []
 default['manifold']['manifold-api']['redis_namespace'] = 'manifold_production'
 default['manifold']['manifold-api']['redis_db'] = 1
-default['manifold']['manifold-api']['elasticsearch_host'] = "127.0.0.1"
-default['manifold']['manifold-api']['elasticsearch_port'] = 3036
 
 # Path to directory that contains (ca) certificates that should also be trusted (e.g. on
 # outgoing Webhooks connections). For these certificates symlinks will be created in
@@ -123,20 +121,6 @@ default['manifold']['puma']['pidfile'] = "#{node['package']['install-dir']}/var/
 default['manifold']['puma']['statefile'] = "#{node['package']['install-dir']}/var/puma/puma.state"
 default['manifold']['puma']['rackup'] = "config.ru"
 default['manifold']['puma']['worker_count'] = 1
-
-####
-# Cable
-####
-default['manifold']['cable']['enable'] = true
-default['manifold']['cable']['log_directory'] = "/var/log/manifold/cable"
-default['manifold']['cable']['dir'] = "#{node['package']['install-dir']}/var/cable"
-default['manifold']['cable']['socket'] = '/var/opt/manifold/api/sockets/cable/cable.sock'
-default['manifold']['cable']['listen'] = '127.0.0.1'
-default['manifold']['cable']['port'] = 3032
-default['manifold']['cable']['pidfile'] = "#{node['package']['install-dir']}/var/puma/cable.pid"
-default['manifold']['cable']['statefile'] = "#{node['package']['install-dir']}/var/puma/cable.state"
-default['manifold']['cable']['rackup'] = "cable/config.ru"
-default['manifold']['cable']['worker_count'] = 1
 
 ####
 # Clockwork
@@ -343,23 +327,6 @@ default['manifold']['logrotate']['enable'] = true
 default['manifold']['logrotate']['ha'] = false
 default['manifold']['logrotate']['dir'] = "/var/opt/manifold/logrotate"
 default['manifold']['logrotate']['log_directory'] = "/var/log/manifold/logrotate"
-default['manifold']['logrotate']['services'] = %w{manifold-api cable client clockwork nginx postgresql puma redis sidekiq}
+default['manifold']['logrotate']['services'] = %w{manifold-api client clockwork nginx postgresql puma redis sidekiq}
 default['manifold']['logrotate']['pre_sleep'] = 600 # sleep 10 minutes before rotating after start-up
 default['manifold']['logrotate']['post_sleep'] = 3000 # wait 50 minutes after rotating
-
-###
-# Elasticsearch
-###
-default['manifold']['elasticsearch']['enable'] = true
-default['manifold']['elasticsearch']['ha'] = false
-default['manifold']['elasticsearch']['dir'] = "/var/opt/manifold/elasticsearch"
-default['manifold']['elasticsearch']['data_dir'] = "/var/opt/manifold/elasticsearch/data"
-default['manifold']['elasticsearch']['data_dir_v7'] = "/var/opt/manifold/elasticsearch/v7data"
-default['manifold']['elasticsearch']['log_directory'] = "/var/log/manifold/elasticsearch"
-default['manifold']['elasticsearch']['username'] = "manifold-elasticsearch"
-default['manifold']['elasticsearch']['bind'] = '127.0.0.1'
-default['manifold']['elasticsearch']['port'] = 3036
-default['manifold']['elasticsearch']['uid'] = nil
-default['manifold']['elasticsearch']['gid'] = nil
-default['manifold']['elasticsearch']['shell'] = "/bin/sh"
-default['manifold']['elasticsearch']['home'] = "/var/opt/manifold/elasticsearch"

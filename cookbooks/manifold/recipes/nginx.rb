@@ -30,10 +30,8 @@ end
 
 puma_enabled = node['manifold']['manifold-api']['enable'] &&
                node['manifold']['puma']['enable']
-cable_enabled = node['manifold']['manifold-api']['enable'] &&
-                node['manifold']['cable']['enable']
 client_enabled = !!node['manifold']['client']['enable']
-nginx_enabled = puma_enabled || client_enabled || cable_enabled
+nginx_enabled = puma_enabled || client_enabled
 nginx_status_enabled = nginx_enabled &&
                        node['manifold']['nginx']['status']['enable']
 
@@ -59,8 +57,6 @@ template manifold_http_conf do
       puma_socket: node['manifold']['puma']['socket'],
       client_enabled: client_enabled,
       client_socket: node['manifold']['client']['socket'],
-      cable_enabled: cable_enabled,
-      cable_socket: node['manifold']['cable']['socket'],
       fqdn: node['manifold']['manifold-api']['manifold_host'] || "127.0.0.1"
     }
   ))

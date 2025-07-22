@@ -95,17 +95,6 @@ api_url_parts = ["http://"]
 api_url_parts << domain
 api_url_parts << ":#{port}" if port && port != 80
 
-cable_url_parts = ["ws://"]
-cable_url_parts << domain
-cable_url_parts << ":#{port}" if port && port != 80
-cable_url_parts << "/cable"
-
-port = node['manifold']['elasticsearch']['port']
-bind = node['manifold']['elasticsearch']['bind']
-elasticsearch_url_parts = ["http://"]
-elasticsearch_url_parts << bind
-elasticsearch_url_parts << ":#{port}" if port
-
 vars = {
     fqdn: node['manifold']['manifold-api']['manifold_host'] || "127.0.0.1",
     api: node['manifold']['manifold-api'].to_hash,
@@ -113,8 +102,6 @@ vars = {
     client: node['manifold']['client'].to_hash,
     domain: domain,
     api_url: api_url_parts.join(""),
-    cable_url: cable_url_parts.join(""),
-    elasticsearch_url: elasticsearch_url_parts.join(""),
     additional_env: node['manifold']['manifold-api']['env']
 }
 
@@ -150,7 +137,6 @@ end
 
 # Configure Services
 [
-    "elasticsearch",
     "nginx",
     "logrotate",
     "bootstrap",
@@ -158,7 +144,6 @@ end
     "sidekiq",
     "clockwork",
     "puma",
-    "cable"
 ].each do |service|
   if node["manifold"][service]["enable"]
     include_recipe "manifold::#{service}"

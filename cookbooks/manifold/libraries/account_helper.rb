@@ -37,15 +37,6 @@ class AccountHelper
     node['manifold']['postgresql']['username']
   end
 
-  def elasticsearch_user
-    node['manifold']['elasticsearch']['username']
-  end
-
-  def elasticsearch_group
-    node['manifold']['elasticsearch']['username']
-  end
-
-
   def users
     %W(
         #{manifold_user}

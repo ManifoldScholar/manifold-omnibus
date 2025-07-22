@@ -17,7 +17,7 @@ define :puma_service, :rails_app => nil, :user => nil do
   puma_listen_address = node['manifold'][svc]['listen']
   puma_worker_count = node['manifold'][svc]['worker_count']
   puma_socket_dir = File.dirname(puma_listen_socket)
-  puma_application = svc == "cable" ? "cable" : "api"
+  puma_application = "api"
 
   [
     puma_log_dir,
@@ -45,7 +45,7 @@ define :puma_service, :rails_app => nil, :user => nil do
     options({
       :service => svc,
       :rails_home => rails_home,
-      :env_prefix => puma_application == "cable" ? "API_CABLE" : "API",
+      :env_prefix => "API",
       :puma_dir => puma_dir,
       :puma_rackup => puma_rackup,
       :puma_pidfile => puma_pidfile,

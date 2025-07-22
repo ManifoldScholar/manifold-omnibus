@@ -101,7 +101,6 @@ template File.join(manifold_api_static_etc_dir, "manifold-api-rc")
 
 dependent_services = []
 dependent_services << "service[puma]" if omnibus_helper.should_notify?("puma")
-dependent_services << "service[cable]" if omnibus_helper.should_notify?("cable")
 dependent_services << "service[sidekiq]" if omnibus_helper.should_notify?("sidekiq")
 
 redis_not_listening = omnibus_helper.not_listening?("redis")
@@ -130,6 +129,24 @@ env_dir File.join(manifold_api_static_etc_dir, 'env') do
   )
 
   restarts dependent_services
+end
+
+# Clean up symlinks from previous versions
+[
+  "/opt/manifold/service/elasticsearch"
+].each do |link|
+  link link do
+    action :delete
+  end
+end
+
+[
+  "/opt/manifold/sv/elasticsearch"
+].each do |dir|
+  directory dir do
+    action :delete
+    recursive true
+  end
 end
 
 # replace empty directories in the Git repo with symlinks to /var/opt/manifold

@@ -27,9 +27,6 @@ build do
   # Delete all gem archives
   command "find #{install_dir} -name '*.gem' -type f -print -delete"
 
-  # Delete all docs
-  #  command "find #{install_dir}/embedded/lib/ruby/gems -name 'doc' -type d -print -exec rm -r {} +"
-
   # Because db/schema.rb can be modified after installation
   copy 'api/db/schema.rb', 'api/db/schema.rb.bundled'
 
