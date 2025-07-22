@@ -26,14 +26,14 @@ else
   override :icu, version: "69.1"
 end
 
+dependency "chef"
+override "chef", version: "v17.10.163"
 dependency "icu" # For the Charlock Holmes Gem
 dependency "rb-readline" # Needed for the rails console to work properly
 dependency "preparation" # Creates required build directories
 dependency "zlib"
 dependency "openssl"
 dependency "ruby"
-dependency "chef"
-override "chef", version: "v16.13.23"
 dependency "chef-zero"
 override "chef-zero", version: "15.0.4"
 dependency "nginx"
@@ -49,6 +49,7 @@ dependency "imagemagick"
 dependency "postgresql"
 dependency "logrotate"
 dependency "omnibus-ctl"
+override "omnibus-ctl", version: "v0.6.11"
 dependency "manifold"
 dependency "manifold-psql"
 dependency "manifold-scripts"
